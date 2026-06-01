@@ -14,5 +14,5 @@ This writes `<task-dir>/overview/index.html` (self-contained, images copied into
 
 - Still show the rendered PNGs inline in chat first (upstream Step 7 behavior is unchanged).
 - Then give the user the `overview/index.html` path.
-- The overview page stays **local by default** — do not auto-publish it. Publishing is an opt-in handoff (see future "End-of-flow handoffs" section).
-- It is also the artifact the publish handoff uploads when the user opts in.
+- The overview page stays **local by default** — do not auto-publish it.
+- A future opt-in publish handoff (feature 4, not yet implemented) will be able to upload this overview page; until then there is no publish step here.
