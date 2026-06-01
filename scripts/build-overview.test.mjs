@@ -1,6 +1,9 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { pngDimensions, classify, buildHtml } from './build-overview.mjs';
+import { mkdtempSync, mkdirSync, writeFileSync, existsSync, readFileSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
+import { pngDimensions, classify, buildHtml, buildOverview } from './build-overview.mjs';
 
 // Minimal PNG: 8-byte signature + IHDR with width/height at offsets 16/20.
 function fakePng(width, height) {
@@ -17,6 +20,12 @@ test('pngDimensions reads IHDR width/height', () => {
 
 test('pngDimensions rejects a non-PNG buffer', () => {
   assert.throws(() => pngDimensions(Buffer.from('not a png at all....')));
+});
+
+test('pngDimensions rejects a long buffer with a wrong signature', () => {
+  // ≥24 bytes so the length guard passes; bad signature must still throw.
+  const buf = Buffer.alloc(24, 0x41); // all 'A' — valid length, wrong signature
+  assert.throws(() => pngDimensions(buf), /bad signature/);
 });
 
 test('classify maps filename prefixes to groups', () => {
@@ -51,11 +60,6 @@ test('buildHtml escapes filenames', () => {
   assert.match(html, /a&amp;b&lt;x&gt;\.png/);
 });
 
-import { buildOverview } from './build-overview.mjs';
-import { mkdtempSync, mkdirSync, writeFileSync, existsSync, readFileSync } from 'node:fs';
-import { tmpdir } from 'node:os';
-import { join } from 'node:path';
-
 test('buildOverview copies PNGs into assets/ and writes a grouped index.html', () => {
   const dir = mkdtempSync(join(tmpdir(), 'sc-overview-'));
   mkdirSync(join(dir, 'output'));
@@ -75,4 +79,18 @@ test('buildOverview copies PNGs into assets/ and writes a grouped index.html', (
 test('buildOverview throws when there is no output dir', () => {
   const dir = mkdtempSync(join(tmpdir(), 'sc-overview-empty-'));
   assert.throws(() => buildOverview(dir), /no output dir/);
+});
+
+test('buildOverview throws when output dir exists but has no PNGs', () => {
+  const dir = mkdtempSync(join(tmpdir(), 'sc-overview-nopng-'));
+  mkdirSync(join(dir, 'output'));
+  assert.throws(() => buildOverview(dir), /no PNGs/);
+});
+
+test('buildOverview includes the filename when a PNG fails to parse', () => {
+  const dir = mkdtempSync(join(tmpdir(), 'sc-overview-bad-'));
+  mkdirSync(join(dir, 'output'));
+  writeFileSync(join(dir, 'output', 'xhs-01-cover.png'), fakePng(1080, 1440));
+  writeFileSync(join(dir, 'output', 'broken.png'), Buffer.from('not a png at all....'));
+  assert.throws(() => buildOverview(dir), /broken\.png/);
 });

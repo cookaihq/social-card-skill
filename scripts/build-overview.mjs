@@ -96,9 +96,14 @@ export function buildOverview(taskDir) {
 
   const items = files.map((file) => {
     const buf = readFileSync(join(outputDir, file));
-    const { width, height } = pngDimensions(buf);
+    let dims;
+    try {
+      dims = pngDimensions(buf);
+    } catch (err) {
+      throw new Error(`failed to read PNG dimensions for ${file}: ${err.message}`);
+    }
     copyFileSync(join(outputDir, file), join(assetsDir, file));
-    return { file, group: classify(file), width, height };
+    return { file, group: classify(file), width: dims.width, height: dims.height };
   });
 
   const indexPath = join(taskDir, 'overview', 'index.html');
