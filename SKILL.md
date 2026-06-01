@@ -298,3 +298,11 @@ Final response (after the user has reviewed or asked for auto-check) should incl
 - Do not crop faces, key UI text, or hardware/product details unless the user explicitly accepts it.
 - Do not reuse a 21:9 cover by blindly cropping it into 1:1. Compose each ratio separately.
 - **3:4 卡必须吃满画布**。Content (text + image + data) 必须覆盖 ≥75% 画布高度。任何 >15% 画布高度的纯空白带都需要"留白理由"：(a) hero image 自带呼吸、(b) 单句宣言式 hero statement、(c) 段落顶/底 leading & trailing whitespace（前后总和 ≤15%）。**禁止用 `<div style="flex: 1"></div>` 上下夹击把内容塞到中段**——杂志页留白逻辑不适用于社交卡（杂志靠对开页吸收留白，社交卡逐张独立刷，欠填看着像 PPT 漏排）。Recipe-by-recipe 最小密度见 `references/layout-recipes.md` 每条 recipe 的「Minimum density」段。Render 后必须跑 `qa-checklist.md` 的 4 横带密度检查。
+
+---
+
+## Fork Extensions (cookaihq)
+
+This fork adds cookaihq-only behaviors on top of the 7 steps above. Full detail in `references/fork-extensions.md`. Apply them at these points:
+
+- **After Step 7 (Deliver):** also build an overview gallery — run `node scripts/build-overview.mjs <task-dir>` and give the user the resulting `overview/index.html` path. Show inline PNGs first (Step 7 unchanged); the overview page is local-only by default. See `references/fork-extensions.md`.
