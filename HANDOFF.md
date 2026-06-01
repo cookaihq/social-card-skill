@@ -1,4 +1,4 @@
-# Handoff — guizang-social-card-skill
+# Handoff — social-card-skill
 
 最后更新：2026-05-28 · 版本：v0.14（截图美化素材迁移：9 张 WebP 背景从 PPT skill port 过来 + 两个种子加 9 条 `.bg-asset-*`）
 
@@ -11,7 +11,7 @@
 ## 1. 目录结构（事实版）
 
 ```
-guizang-social-card-skill/
+social-card-skill/
 ├── SKILL.md                   # 7 步工作流入口
 ├── HANDOFF.md                 # 本文件
 ├── PRODUCT.md                 # 产品思考

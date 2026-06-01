@@ -1,9 +1,9 @@
 ---
-name: guizang-social-card-skill
+name: social-card-skill
 description: Generate Guizang-style social card image sets and WeChat official account cover pairs from articles, scripts, screenshots, product notes, subtitles, or photos. Use when the user asks for 小红书图文, Rednote/Xiaohongshu images, social cards, carousel images, 3:4 covers, 微信公众号封面, WeChat 21:9 + 1:1 covers, Swiss Style, or magazine-style social images.
 ---
 
-# Guizang Social Card Skill
+# Social Card Skill
 
 Create polished social card packages for Xiaohongshu/Rednote, WeChat Official Account, article covers, and platform thumbnails.
 

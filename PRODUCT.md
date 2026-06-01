@@ -1,4 +1,4 @@
-# Product — guizang-social-card-skill
+# Product — social-card-skill
 
 这份文档讲**为什么**。事实在 `HANDOFF.md`。
 
