@@ -11,3 +11,5 @@ npm-debug.log*
 # Editor / OS
 .vscode/
 .idea/
+
+.github-token
