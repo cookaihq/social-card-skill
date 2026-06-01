@@ -50,3 +50,29 @@ test('buildHtml escapes filenames', () => {
   ]);
   assert.match(html, /a&amp;b&lt;x&gt;\.png/);
 });
+
+import { buildOverview } from './build-overview.mjs';
+import { mkdtempSync, mkdirSync, writeFileSync, existsSync, readFileSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
+
+test('buildOverview copies PNGs into assets/ and writes a grouped index.html', () => {
+  const dir = mkdtempSync(join(tmpdir(), 'sc-overview-'));
+  mkdirSync(join(dir, 'output'));
+  writeFileSync(join(dir, 'output', 'xhs-01-cover.png'), fakePng(1080, 1440));
+  writeFileSync(join(dir, 'output', 'wechat-21x9-cover.png'), fakePng(2100, 900));
+
+  const indexPath = buildOverview(dir);
+
+  assert.ok(existsSync(indexPath), 'index.html exists');
+  assert.ok(existsSync(join(dir, 'overview', 'assets', 'xhs-01-cover.png')), 'png copied');
+  const html = readFileSync(indexPath, 'utf8');
+  assert.match(html, /小红书组图/);
+  assert.match(html, /公众号封面对/);
+  assert.match(html, /共 2 张/);
+});
+
+test('buildOverview throws when there is no output dir', () => {
+  const dir = mkdtempSync(join(tmpdir(), 'sc-overview-empty-'));
+  assert.throws(() => buildOverview(dir), /no output dir/);
+});

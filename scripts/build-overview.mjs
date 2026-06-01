@@ -1,4 +1,5 @@
-import { basename } from 'node:path';
+import { readFileSync, readdirSync, mkdirSync, copyFileSync, writeFileSync, existsSync } from 'node:fs';
+import { basename, join } from 'node:path';
 
 // Read PNG intrinsic size from the IHDR chunk — no image library needed.
 // PNG = 8-byte signature, then IHDR length(4)+type(4); width/height are the
@@ -78,4 +79,39 @@ export function buildHtml(items) {
 </body>
 </html>
 `;
+}
+
+// Reads <taskDir>/output/*.png, copies them into <taskDir>/overview/assets/,
+// writes <taskDir>/overview/index.html. Returns the index.html path.
+export function buildOverview(taskDir) {
+  const outputDir = join(taskDir, 'output');
+  if (!existsSync(outputDir)) throw new Error(`no output dir: ${outputDir}`);
+  const files = readdirSync(outputDir)
+    .filter((f) => f.toLowerCase().endsWith('.png'))
+    .sort();
+  if (files.length === 0) throw new Error(`no PNGs in ${outputDir}`);
+
+  const assetsDir = join(taskDir, 'overview', 'assets');
+  mkdirSync(assetsDir, { recursive: true });
+
+  const items = files.map((file) => {
+    const buf = readFileSync(join(outputDir, file));
+    const { width, height } = pngDimensions(buf);
+    copyFileSync(join(outputDir, file), join(assetsDir, file));
+    return { file, group: classify(file), width, height };
+  });
+
+  const indexPath = join(taskDir, 'overview', 'index.html');
+  writeFileSync(indexPath, buildHtml(items));
+  return indexPath;
+}
+
+// CLI: node scripts/build-overview.mjs <task-dir>
+if (import.meta.url === `file://${process.argv[1]}`) {
+  const taskDir = process.argv[2];
+  if (!taskDir) {
+    console.error('usage: node scripts/build-overview.mjs <task-dir>');
+    process.exit(1);
+  }
+  console.log(buildOverview(taskDir));
 }
