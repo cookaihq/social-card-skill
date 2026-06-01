@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "test": "node --test",
     "validate": "node validate-social-deck.mjs"
   },
   "keywords": [],
