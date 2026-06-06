@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Social Card · 风格图鉴</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23002FA7'/%3E%3C/svg%3E">
-
 <style>
   :root {
     --bg: #f6f6f7;
@@ -19,20 +18,16 @@
   }
   * { box-sizing: border-box; }
   body {
-    margin: 0;
-    font-family: var(--inter);
-    background: var(--bg);
-    color: var(--fg);
-    line-height: 1.5;
-    -webkit-font-smoothing: antialiased;
+    margin: 0; font-family: var(--inter); background: var(--bg); color: var(--fg);
+    line-height: 1.5; -webkit-font-smoothing: antialiased;
   }
-  .wrap { max-width: 1180px; margin: 0 auto; padding: 40px 28px 80px; }
+  .wrap { max-width: 1280px; margin: 0 auto; padding: 40px 28px 80px; }
 
   /* ---- masthead ---- */
-  .masthead { border-bottom: 2px solid var(--fg); padding-bottom: 18px; margin-bottom: 8px; }
+  .masthead { border-bottom: 2px solid var(--fg); padding-bottom: 18px; }
   .masthead .kicker { font: 600 12px/1 var(--mono); letter-spacing: .18em; text-transform: uppercase; color: var(--muted-fg); }
   .masthead h1 { font-size: 30px; font-weight: 700; margin: 12px 0 6px; letter-spacing: -.01em; }
-  .masthead p { margin: 0; color: var(--muted-fg); max-width: 64ch; font-size: 15px; }
+  .masthead p { margin: 0; color: var(--muted-fg); max-width: 66ch; font-size: 15px; }
 
   .howto {
     display: flex; gap: 14px; align-items: flex-start;
@@ -43,86 +38,87 @@
   .howto .pill { font: 600 12px/1 var(--mono); background: #18181b; color: #fff; padding: 4px 8px; border-radius: 5px; white-space: nowrap; }
 
   /* ---- section ---- */
-  section.system { margin-bottom: 64px; }
-  .sys-head { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; border-bottom: 1px solid var(--hair); padding-bottom: 14px; margin-bottom: 26px; }
+  section.system { margin-bottom: 60px; }
+  .sys-head { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; border-bottom: 1px solid var(--hair); padding-bottom: 14px; margin-bottom: 28px; }
   .sys-head .idx { font: 700 13px/1 var(--mono); color: var(--muted-fg); }
   .sys-head h2 { font-size: 22px; font-weight: 700; margin: 0; }
   .sys-head .tag { font-size: 13px; color: var(--muted-fg); }
-  .sys-body { display: grid; grid-template-columns: 320px 1fr; gap: 36px; align-items: start; }
-  @media (max-width: 860px) { .sys-body { grid-template-columns: 1fr; } }
 
-  .sample-wrap { position: sticky; top: 20px; }
-  .sample-label { font: 600 11px/1 var(--mono); letter-spacing: .16em; text-transform: uppercase; color: var(--muted-fg); margin-bottom: 10px; }
-  .sample-note { font-size: 12.5px; color: var(--muted-fg); margin-top: 12px; }
-  .sample-note li { margin: 2px 0; }
-
-  /* 3:4 poster frame, scaled-down representation of a real 1080×1440 card */
-  .poster { width: 300px; aspect-ratio: 3 / 4; border-radius: 6px; overflow: hidden; box-shadow: 0 6px 24px rgba(0,0,0,.12); position: relative; }
-
-  /* ===== Editorial example poster (Ink Classic) ===== */
-  .ed {
-    --paper: #f3f0e8; --paper-2: #ebe6da; --ink: #0a0a0b; --muted: #68625a;
-    --line: rgba(10,10,11,.22); --accent: #111111;
-    background: var(--paper); color: var(--ink); font-family: var(--songti);
-    display: flex; flex-direction: column; padding: 22px 20px;
-  }
-  .ed::before { /* paper grain */
-    content: ""; position: absolute; inset: 0; pointer-events: none;
-    background-image: radial-gradient(rgba(10,10,11,.05) 1px, transparent 1px);
-    background-size: 4px 4px; opacity: .7;
-  }
-  .ed::after { /* paper wash */
-    content: ""; position: absolute; inset: 0; pointer-events: none;
-    background: radial-gradient(70% 50% at 24% 14%, rgba(0,0,0,.05), transparent 64%),
-                radial-gradient(60% 55% at 84% 88%, rgba(0,0,0,.06), transparent 70%);
-  }
-  .ed > * { position: relative; z-index: 1; }
-  .ed .issue { display: flex; justify-content: space-between; font-family: var(--inter); font-size: 9px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); border-bottom: 1px solid var(--line); padding-bottom: 7px; }
-  .ed .deck { font-family: var(--inter); font-size: 9px; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin: 16px 0 6px; }
-  .ed h3 { font-size: 30px; line-height: 1.12; font-weight: 600; margin: 0 0 4px; letter-spacing: -.01em; }
-  .ed .sub { font-size: 12px; color: var(--muted); margin: 0 0 14px; font-family: var(--inter); }
-  .ed .well { flex: 1; min-height: 70px; border-radius: 3px; margin-bottom: 14px;
-    background: linear-gradient(150deg, #d9d2c2, #c3b7a1 60%, #a99c80);
-    box-shadow: inset 0 0 0 1px rgba(0,0,0,.08); }
-  .ed .ledger { font-family: var(--inter); }
-  .ed .ledger .row { display: flex; justify-content: space-between; font-size: 11px; padding: 5px 0; border-bottom: 1px solid var(--line); color: var(--ink); }
-  .ed .ledger .row span:last-child { color: var(--muted); }
-  .ed .quote { font-size: 13px; line-height: 1.35; margin: 12px 0 0; padding-left: 10px; border-left: 2px solid var(--accent); }
-
-  /* ===== Swiss example poster (IKB Blue) ===== */
-  .sw {
-    --paper: #fafaf8; --ink: #0a0a0a; --grey-2: #d4d4d2; --grey-3: #737373; --accent: #002FA7; --accent-on: #fff;
-    background: var(--paper); color: var(--ink); font-family: var(--inter);
-    display: flex; flex-direction: column; padding: 20px 18px;
-  }
-  .sw .top { display: flex; justify-content: space-between; font: 600 8.5px/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--grey-3); border-bottom: 1.5px solid var(--ink); padding-bottom: 8px; }
-  .sw h3 { font-size: 33px; line-height: 1.04; font-weight: 300; letter-spacing: -.02em; margin: 18px 0 0; } /* the larger, the lighter */
-  .sw h3 b { font-weight: 600; }
-  .sw .meta-line { font: 600 8.5px/1 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--grey-3); margin: 14px 0 0; }
-  .sw .num { font-size: 60px; font-weight: 300; line-height: .9; letter-spacing: -.03em; margin: 6px 0 0; }
-  .sw .num small { font-size: 13px; font-weight: 600; color: var(--accent); vertical-align: super; }
-  .sw .bars { margin-top: auto; display: grid; gap: 7px; padding-top: 16px; }
-  .sw .bar { display: grid; grid-template-columns: 46px 1fr; align-items: center; gap: 8px; font: 600 8.5px/1 var(--mono); text-transform: uppercase; color: var(--grey-3); }
-  .sw .bar i { height: 10px; background: var(--grey-2); display: block; }
-  .sw .bar.on i { background: var(--accent); }
-  .sw .foot { display: flex; justify-content: space-between; font: 600 8.5px/1 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--grey-3); border-top: 1px solid var(--grey-2); margin-top: 14px; padding-top: 8px; }
-
-  /* ---- swatches ---- */
-  .swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(232px, 1fr)); gap: 16px; }
-  .sw-card { background: var(--card-bg); border: 1px solid var(--hair); border-radius: 10px; overflow: hidden; }
-  .sw-preview { height: 96px; position: relative; display: flex; align-items: flex-end; padding: 10px 12px; }
-  .sw-preview .serif { font-family: var(--songti); font-size: 22px; line-height: 1; }
-  .sw-preview .sans { font-family: var(--inter); font-weight: 300; font-size: 23px; letter-spacing: -.01em; }
-  .sw-preview .chip { position: absolute; top: 10px; right: 10px; padding: 3px 7px; border-radius: 4px; font: 600 10px/1 var(--mono); }
-  .sw-body { padding: 12px 13px 14px; }
-  .sw-name { font-size: 14px; font-weight: 650; margin: 0 0 2px; display: flex; align-items: center; gap: 7px; }
-  .sw-name .dark-flag { font: 600 9px/1 var(--mono); background: #18181b; color: #fff; padding: 2px 5px; border-radius: 4px; letter-spacing: .06em; }
-  .sw-use { font-size: 12.5px; color: var(--muted-fg); margin: 0 0 9px; min-height: 34px; }
+  /* ---- gallery grid: one full poster per theme ---- */
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(288px, 1fr)); gap: 30px 24px; }
+  .cell { margin: 0; }
+  .cell figcaption { padding-top: 12px; }
+  .cap-name { font-size: 15px; font-weight: 650; margin: 0 0 2px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .cap-name .flag { font: 600 10px/1 var(--mono); color: #fff; padding: 2px 6px; border-radius: 4px; letter-spacing: .04em; }
+  .cap-use { font-size: 13px; color: var(--muted-fg); margin: 0 0 9px; }
   .hexes { display: flex; flex-wrap: wrap; gap: 5px; }
   .hex { display: inline-flex; align-items: center; gap: 5px; font: 500 10.5px/1 var(--mono); color: var(--muted-fg); background: #f3f3f5; border-radius: 4px; padding: 4px 6px; }
   .hex i { width: 11px; height: 11px; border-radius: 3px; box-shadow: inset 0 0 0 1px rgba(0,0,0,.12); }
 
-  .foot-note { margin-top: 56px; padding-top: 22px; border-top: 1px solid var(--hair); font-size: 13px; color: var(--muted-fg); }
+  /* 3:4 poster — fixed 288×384 so internal type stays proportional */
+  .poster { width: 288px; max-width: 100%; aspect-ratio: 3 / 4; border-radius: 6px; overflow: hidden; box-shadow: 0 6px 22px rgba(0,0,0,.13); position: relative; }
+
+  /* ===== Editorial layout (palette comes from the per-theme class) ===== */
+  .ed {
+    background: var(--paper); color: var(--ink); font-family: var(--songti);
+    display: flex; flex-direction: column; padding: 21px 19px;
+  }
+  .ed::before { content: ""; position: absolute; inset: 0; pointer-events: none;
+    background-image: radial-gradient(rgba(10,10,11,.05) 1px, transparent 1px); background-size: 4px 4px; opacity: .7; }
+  .ed::after { content: ""; position: absolute; inset: 0; pointer-events: none;
+    background: radial-gradient(70% 50% at 24% 14%, rgba(0,0,0,.05), transparent 64%),
+                radial-gradient(60% 55% at 84% 88%, rgba(0,0,0,.06), transparent 70%); }
+  .ed.dark::before { background-image: radial-gradient(rgba(255,244,214,.10) 1px, transparent 1px); mix-blend-mode: screen; opacity: .9; }
+  .ed.dark::after { background: radial-gradient(80% 50% at 28% 16%, rgba(212,160,74,.14), transparent 64%),
+                radial-gradient(70% 60% at 80% 86%, rgba(60,40,20,.28), transparent 72%); }
+  .ed > * { position: relative; z-index: 1; }
+  .ed .issue { display: flex; justify-content: space-between; font-family: var(--inter); font-size: 9px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); border-bottom: 1px solid var(--line); padding-bottom: 7px; }
+  .ed .deck { font-family: var(--inter); font-size: 9px; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin: 15px 0 6px; }
+  .ed h3 { font-size: 29px; line-height: 1.12; font-weight: 600; margin: 0 0 5px; letter-spacing: -.01em; }
+  .ed .sub { font-size: 11.5px; color: var(--muted); margin: 0 0 13px; font-family: var(--inter); }
+  .ed .well { flex: 1; min-height: 64px; border-radius: 3px; margin-bottom: 13px;
+    background: linear-gradient(150deg, var(--paper-2), var(--accent-soft) 58%, var(--muted));
+    box-shadow: inset 0 0 0 1px rgba(0,0,0,.08); }
+  .ed .ledger { font-family: var(--inter); }
+  .ed .ledger .row { display: flex; justify-content: space-between; font-size: 10.5px; padding: 5px 0; border-bottom: 1px solid var(--line); color: var(--ink); }
+  .ed .ledger .row span:last-child { color: var(--muted); }
+  .ed .quote { font-size: 12.5px; line-height: 1.35; margin: 11px 0 0; padding-left: 10px; border-left: 2px solid var(--accent); }
+
+  /* ===== Swiss layout (only --accent / --accent-on vary) ===== */
+  .sw {
+    --paper: #fafaf8; --ink: #0a0a0a; --grey-2: #d4d4d2; --grey-3: #737373;
+    background: var(--paper); color: var(--ink); font-family: var(--inter);
+    display: flex; flex-direction: column; padding: 19px 17px;
+  }
+  .sw .top { display: flex; justify-content: space-between; font: 600 8.5px/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--grey-3); border-bottom: 1.5px solid var(--ink); padding-bottom: 8px; }
+  .sw .chip { align-self: flex-start; margin-top: 14px; font: 600 9px/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; padding: 4px 7px; background: var(--accent); color: var(--accent-on); }
+  .sw h3 { font-size: 32px; line-height: 1.05; font-weight: 300; letter-spacing: -.02em; margin: 12px 0 0; }
+  .sw h3 b { font-weight: 600; }
+  .sw .meta-line { font: 600 8.5px/1 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--grey-3); margin: 13px 0 0; }
+  .sw .num { font-size: 58px; font-weight: 300; line-height: .9; letter-spacing: -.03em; margin: 5px 0 0; }
+  .sw .num small { font-size: 12px; font-weight: 600; color: var(--accent); vertical-align: super; }
+  .sw .bars { margin-top: auto; display: grid; gap: 7px; padding-top: 15px; }
+  .sw .bar { display: grid; grid-template-columns: 44px 1fr; align-items: center; gap: 8px; font: 600 8.5px/1 var(--mono); text-transform: uppercase; color: var(--grey-3); }
+  .sw .bar i { height: 10px; background: var(--grey-2); display: block; }
+  .sw .bar.on i { background: var(--accent); }
+  .sw .foot { display: flex; justify-content: space-between; font: 600 8.5px/1 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--grey-3); border-top: 1px solid var(--grey-2); margin-top: 13px; padding-top: 8px; }
+
+  /* ===== Editorial palettes (from references/theme-presets.md) ===== */
+  .t-ink-classic      { --paper:#f3f0e8; --paper-2:#ebe6da; --ink:#0a0a0b; --muted:#68625a; --line:rgba(10,10,11,.22); --accent:#111111; --accent-soft:#d8d2c6; }
+  .t-indigo-porcelain { --paper:#f2f4f5; --paper-2:#e5ebef; --ink:#0a1f3d; --muted:#5f6d78; --line:rgba(10,31,61,.20); --accent:#315d93; --accent-soft:#d7e1ec; }
+  .t-forest-ink       { --paper:#f5f1e8; --paper-2:#e8dfcf; --ink:#16251b; --muted:#5d665d; --line:rgba(22,37,27,.22); --accent:#2e6b4f; --accent-soft:#d4dfd2; }
+  .t-kraft-paper      { --paper:#eedfc7; --paper-2:#dfc9a8; --ink:#2a1e13; --muted:#755f49; --line:rgba(42,30,19,.24); --accent:#9b5a2e; --accent-soft:#d5b58f; }
+  .t-dune             { --paper:#f0e6d2; --paper-2:#ded0b7; --ink:#1f1a14; --muted:#6f6557; --line:rgba(31,26,20,.22); --accent:#8f7650; --accent-soft:#d4c2a4; }
+  .t-midnight-ink     { --paper:#0e0d0c; --paper-2:#1a1714; --ink:#ece2cf; --muted:#9a8c75; --line:rgba(236,226,207,.22); --accent:#d4a04a; --accent-soft:#3a2a14; }
+
+  /* ===== Swiss accents ===== */
+  .a-ikb           { --accent:#002FA7; --accent-on:#ffffff; }
+  .a-lemon-yellow  { --accent:#FFD500; --accent-on:#0a0a0a; }
+  .a-lemon-green   { --accent:#C5E803; --accent-on:#0a0a0a; }
+  .a-safety-orange { --accent:#FF6B35; --accent-on:#ffffff; }
+
+  .foot-note { margin-top: 52px; padding-top: 22px; border-top: 1px solid var(--hair); font-size: 13px; color: var(--muted-fg); }
+  .foot-note code { font-family: var(--mono); font-size: 12px; background: #eee; padding: 1px 5px; border-radius: 4px; }
 </style>
 </head>
 <body>
@@ -131,12 +127,12 @@
   <header class="masthead">
     <div class="kicker">Social Card Skill · Style Reference</div>
     <h1>风格图鉴</h1>
-    <p>这套技能只有两套视觉体系，<b>同一组图里不混用</b>。先选体系（决定版面气质），再在该体系下选一个主题配色。下面左侧是体系大样，右侧是该体系的全部主题色板。</p>
+    <p>这套技能只有两套视觉体系，<b>同一组图里不混用</b>。先选体系（决定版面气质），再在该体系下选一个主题。下面每个主题都给了一张完整 3:4 大样——<b>同体系版面相同、只换配色</b>，这样你能直接看出每套配色把同一张版面变成什么样。</p>
   </header>
 
   <div class="howto">
     <span class="pill">看完怎么选</span>
-    <div>看中哪套就回到对话里告诉我 <b>体系 + 主题名</b>，例如「<b>Swiss · IKB 蓝</b>」或「<b>Editorial · 森林墨</b>」。只说体系也行，主题我按内容默认推荐。</div>
+    <div>看中哪张就回到对话里告诉我 <b>体系 + 主题名</b>，例如「<b>Swiss · IKB 蓝</b>」或「<b>Editorial · 森林墨</b>」。只说体系也行，主题我按内容默认推荐。</div>
   </div>
 
   <!-- ===================== EDITORIAL ===================== -->
@@ -144,128 +140,112 @@
     <div class="sys-head">
       <span class="idx">01</span>
       <h2>Editorial Magazine × E-ink · 杂志墨感</h2>
-      <span class="tag">衬线/宋体标题 · 纸感墨色 · 氛围层 · 账本行/边注/大图井 —— 慢读、考究、像手工排过版</span>
+      <span class="tag">衬线/宋体标题 · 纸感墨色 · 氛围层 · 账本行/边注/大图井 —— 慢读、考究、像手工排过版 · 6 套主题</span>
     </div>
-    <div class="sys-body">
-      <div class="sample-wrap">
-        <div class="sample-label">体系大样 · 3:4（主题：Ink Classic）</div>
-        <div class="poster ed">
+    <div class="grid">
+
+      <figure class="cell">
+        <div class="poster ed t-ink-classic">
           <div class="issue"><span>Issue 04 — 随笔</span><span>纸感 · 墨色</span></div>
           <div class="deck">Field Note</div>
           <h3>把复杂的东西<br>讲得慢一点</h3>
           <div class="sub">A quieter way to say the same thing.</div>
           <div class="well"></div>
-          <div class="ledger">
-            <div class="row"><span>排版气质</span><span>慢读 · 考究</span></div>
-            <div class="row"><span>适合内容</span><span>随笔 · 人文 · 故事</span></div>
-          </div>
+          <div class="ledger"><div class="row"><span>排版气质</span><span>慢读 · 考究</span></div><div class="row"><span>适合内容</span><span>随笔 · 评论</span></div></div>
           <blockquote class="quote">留白是被读出来的，不是被塞满的。</blockquote>
         </div>
-        <ul class="sample-note">
-          <li>衬线/宋体大标题 + 安静无衬线正文</li>
-          <li>纸纹 / 墨晕氛围层，不是纯色背景</li>
-          <li>账本行、边注、引文、大图井</li>
-        </ul>
-      </div>
+        <figcaption>
+          <p class="cap-name">Ink Classic · 经典墨</p>
+          <p class="cap-use">商业评论、AI 随笔、产品思考、中性编辑稿。</p>
+          <div class="hexes"><span class="hex"><i style="background:#f3f0e8"></i>#f3f0e8</span><span class="hex"><i style="background:#0a0a0b"></i>#0a0a0b</span><span class="hex"><i style="background:#111111"></i>#111111</span></div>
+        </figcaption>
+      </figure>
 
-      <div class="swatches">
-        <!-- Ink Classic -->
-        <div class="sw-card">
-          <div class="sw-preview" style="background:#f3f0e8; color:#0a0a0b;">
-            <span class="chip" style="background:#111111; color:#fff;">accent</span>
-            <span class="serif">墨 Aa 永</span>
-          </div>
-          <div class="sw-body">
-            <p class="sw-name">Ink Classic · 经典墨</p>
-            <p class="sw-use">商业评论、AI 随笔、产品思考、中性编辑稿。</p>
-            <div class="hexes">
-              <span class="hex"><i style="background:#f3f0e8"></i>#f3f0e8 纸</span>
-              <span class="hex"><i style="background:#0a0a0b"></i>#0a0a0b 墨</span>
-              <span class="hex"><i style="background:#111111"></i>#111111 强调</span>
-            </div>
-          </div>
+      <figure class="cell">
+        <div class="poster ed t-indigo-porcelain">
+          <div class="issue"><span>Issue 04 — 研究</span><span>冷静 · 分析</span></div>
+          <div class="deck">Research</div>
+          <h3>一份冷静的<br>技术观察</h3>
+          <div class="sub">Data first, conclusions later.</div>
+          <div class="well"></div>
+          <div class="ledger"><div class="row"><span>排版气质</span><span>克制 · 理性</span></div><div class="row"><span>适合内容</span><span>研究 · 数据</span></div></div>
+          <blockquote class="quote">先把事实摆清楚，再谈判断。</blockquote>
         </div>
-        <!-- Indigo Porcelain -->
-        <div class="sw-card">
-          <div class="sw-preview" style="background:#f2f4f5; color:#0a1f3d;">
-            <span class="chip" style="background:#315d93; color:#fff;">accent</span>
-            <span class="serif">青 Aa 永</span>
-          </div>
-          <div class="sw-body">
-            <p class="sw-name">Indigo Porcelain · 青花瓷</p>
-            <p class="sw-use">技术、研究、数据、AI 基建、冷静的分析写作。</p>
-            <div class="hexes">
-              <span class="hex"><i style="background:#f2f4f5"></i>#f2f4f5 纸</span>
-              <span class="hex"><i style="background:#0a1f3d"></i>#0a1f3d 墨</span>
-              <span class="hex"><i style="background:#315d93"></i>#315d93 强调</span>
-            </div>
-          </div>
+        <figcaption>
+          <p class="cap-name">Indigo Porcelain · 青花瓷</p>
+          <p class="cap-use">技术、研究、数据、AI 基建、冷静的分析写作。</p>
+          <div class="hexes"><span class="hex"><i style="background:#f2f4f5"></i>#f2f4f5</span><span class="hex"><i style="background:#0a1f3d"></i>#0a1f3d</span><span class="hex"><i style="background:#315d93"></i>#315d93</span></div>
+        </figcaption>
+      </figure>
+
+      <figure class="cell">
+        <div class="poster ed t-forest-ink">
+          <div class="issue"><span>Issue 04 — 山野</span><span>户外 · 田野</span></div>
+          <div class="deck">Trail Note</div>
+          <h3>山里<br>走了十公里</h3>
+          <div class="sub">Notes from a long walk.</div>
+          <div class="well"></div>
+          <div class="ledger"><div class="row"><span>排版气质</span><span>踏实 · 自然</span></div><div class="row"><span>适合内容</span><span>徒步 · 户外</span></div></div>
+          <blockquote class="quote">脚步丈量过的，才算真的到过。</blockquote>
         </div>
-        <!-- Forest Ink -->
-        <div class="sw-card">
-          <div class="sw-preview" style="background:#f5f1e8; color:#16251b;">
-            <span class="chip" style="background:#2e6b4f; color:#fff;">accent</span>
-            <span class="serif">林 Aa 永</span>
-          </div>
-          <div class="sw-body">
-            <p class="sw-name">Forest Ink · 森林墨</p>
-            <p class="sw-use">徒步、户外、自然、可持续、田野笔记、踏实的生活方式。</p>
-            <div class="hexes">
-              <span class="hex"><i style="background:#f5f1e8"></i>#f5f1e8 纸</span>
-              <span class="hex"><i style="background:#16251b"></i>#16251b 墨</span>
-              <span class="hex"><i style="background:#2e6b4f"></i>#2e6b4f 强调</span>
-            </div>
-          </div>
+        <figcaption>
+          <p class="cap-name">Forest Ink · 森林墨</p>
+          <p class="cap-use">徒步、户外、自然、可持续、田野笔记、踏实的生活方式。</p>
+          <div class="hexes"><span class="hex"><i style="background:#f5f1e8"></i>#f5f1e8</span><span class="hex"><i style="background:#16251b"></i>#16251b</span><span class="hex"><i style="background:#2e6b4f"></i>#2e6b4f</span></div>
+        </figcaption>
+      </figure>
+
+      <figure class="cell">
+        <div class="poster ed t-kraft-paper">
+          <div class="issue"><span>Issue 04 — 旧物</span><span>手作 · 记忆</span></div>
+          <div class="deck">Archive</div>
+          <h3>旧物<br>与它的来历</h3>
+          <div class="sub">Everything carries its time.</div>
+          <div class="well"></div>
+          <div class="ledger"><div class="row"><span>排版气质</span><span>温暖 · 低技</span></div><div class="row"><span>适合内容</span><span>手作 · 随笔</span></div></div>
+          <blockquote class="quote">每件东西都带着时间的痕迹。</blockquote>
         </div>
-        <!-- Kraft Paper -->
-        <div class="sw-card">
-          <div class="sw-preview" style="background:#eedfc7; color:#2a1e13;">
-            <span class="chip" style="background:#9b5a2e; color:#fff;">accent</span>
-            <span class="serif">牛 Aa 永</span>
-          </div>
-          <div class="sw-body">
-            <p class="sw-name">Kraft Paper · 牛皮纸</p>
-            <p class="sw-use">记忆、手作、个人随笔、旧物、创作者笔记、温暖低技感。</p>
-            <div class="hexes">
-              <span class="hex"><i style="background:#eedfc7"></i>#eedfc7 纸</span>
-              <span class="hex"><i style="background:#2a1e13"></i>#2a1e13 墨</span>
-              <span class="hex"><i style="background:#9b5a2e"></i>#9b5a2e 强调</span>
-            </div>
-          </div>
+        <figcaption>
+          <p class="cap-name">Kraft Paper · 牛皮纸</p>
+          <p class="cap-use">记忆、手作、个人随笔、旧物、创作者笔记、温暖低技感。</p>
+          <div class="hexes"><span class="hex"><i style="background:#eedfc7"></i>#eedfc7</span><span class="hex"><i style="background:#2a1e13"></i>#2a1e13</span><span class="hex"><i style="background:#9b5a2e"></i>#9b5a2e</span></div>
+        </figcaption>
+      </figure>
+
+      <figure class="cell">
+        <div class="poster ed t-dune">
+          <div class="issue"><span>Issue 04 — 器物</span><span>设计 · 画廊</span></div>
+          <div class="deck">Object Study</div>
+          <h3>克制<br>是一种设计</h3>
+          <div class="sub">Less, but better.</div>
+          <div class="well"></div>
+          <div class="ledger"><div class="row"><span>排版气质</span><span>克制 · 美学</span></div><div class="row"><span>适合内容</span><span>设计 · 作品集</span></div></div>
+          <blockquote class="quote">少，但是更好。</blockquote>
         </div>
-        <!-- Dune -->
-        <div class="sw-card">
-          <div class="sw-preview" style="background:#f0e6d2; color:#1f1a14;">
-            <span class="chip" style="background:#8f7650; color:#fff;">accent</span>
-            <span class="serif">沙 Aa 永</span>
-          </div>
-          <div class="sw-body">
-            <p class="sw-name">Dune · 沙丘</p>
-            <p class="sw-use">设计、器物研究、作品集封面、画廊调性、克制的美学稿。</p>
-            <div class="hexes">
-              <span class="hex"><i style="background:#f0e6d2"></i>#f0e6d2 纸</span>
-              <span class="hex"><i style="background:#1f1a14"></i>#1f1a14 墨</span>
-              <span class="hex"><i style="background:#8f7650"></i>#8f7650 强调</span>
-            </div>
-          </div>
+        <figcaption>
+          <p class="cap-name">Dune · 沙丘</p>
+          <p class="cap-use">设计、器物研究、作品集封面、画廊调性、克制的美学稿。</p>
+          <div class="hexes"><span class="hex"><i style="background:#f0e6d2"></i>#f0e6d2</span><span class="hex"><i style="background:#1f1a14"></i>#1f1a14</span><span class="hex"><i style="background:#8f7650"></i>#8f7650</span></div>
+        </figcaption>
+      </figure>
+
+      <figure class="cell">
+        <div class="poster ed dark t-midnight-ink">
+          <div class="issue"><span>Issue 04 — 原画</span><span>夜 · 电影感</span></div>
+          <div class="deck">Key Art</div>
+          <h3>夜色里的<br>角色侧写</h3>
+          <div class="sub">Dark by design.</div>
+          <div class="well"></div>
+          <div class="ledger"><div class="row"><span>排版气质</span><span>暗调 · 鎏金</span></div><div class="row"><span>适合内容</span><span>游戏 · 夜景</span></div></div>
+          <blockquote class="quote">暗，是为了让光有意义。</blockquote>
         </div>
-        <!-- Midnight Ink -->
-        <div class="sw-card">
-          <div class="sw-preview" style="background:#0e0d0c; color:#ece2cf;">
-            <span class="chip" style="background:#d4a04a; color:#0e0d0c;">accent</span>
-            <span class="serif">夜 Aa 永</span>
-          </div>
-          <div class="sw-body">
-            <p class="sw-name">Midnight Ink · 午夜墨 <span class="dark-flag">唯一深色</span></p>
-            <p class="sw-use">游戏原画、夜景摄影、电影感封面、暗调文化稿（源图本身就暗时才用）。</p>
-            <div class="hexes">
-              <span class="hex"><i style="background:#0e0d0c"></i>#0e0d0c 底</span>
-              <span class="hex"><i style="background:#ece2cf"></i>#ece2cf 字</span>
-              <span class="hex"><i style="background:#d4a04a"></i>#d4a04a 鎏金</span>
-            </div>
-          </div>
-        </div>
-      </div>
+        <figcaption>
+          <p class="cap-name">Midnight Ink · 午夜墨 <span class="flag" style="background:#d4a04a; color:#0e0d0c;">唯一深色</span></p>
+          <p class="cap-use">游戏原画、夜景摄影、电影感封面、暗调文化稿（源图本身就暗时才用）。</p>
+          <div class="hexes"><span class="hex"><i style="background:#0e0d0c"></i>#0e0d0c</span><span class="hex"><i style="background:#ece2cf"></i>#ece2cf</span><span class="hex"><i style="background:#d4a04a"></i>#d4a04a</span></div>
+        </figcaption>
+      </figure>
+
     </div>
   </section>
 
@@ -274,97 +254,82 @@
     <div class="sys-head">
       <span class="idx">02</span>
       <h2>Swiss International · 瑞士工程感</h2>
-      <span class="tag">Inter/无衬线 · 严格网格 · 发丝线 · 单一高饱和强调色 · 卡片矩阵/KPI塔/条形图 —— 工程、量化、果断</span>
+      <span class="tag">Inter/无衬线 · 严格网格 · 发丝线 · 单一高饱和强调色 · 卡片矩阵/KPI塔/条形图 —— 工程、量化、果断 · 4 套锚点色</span>
     </div>
-    <div class="sys-body">
-      <div class="sample-wrap">
-        <div class="sample-label">体系大样 · 3:4（主题：IKB 蓝）</div>
-        <div class="poster sw">
-          <div class="top"><span>Issue / 01</span><span>Swiss · System</span></div>
+    <div class="grid">
+
+      <figure class="cell">
+        <div class="poster sw a-ikb">
+          <div class="top"><span>Issue / 01 — System</span><span>Swiss</span></div>
+          <span class="chip">默认首选</span>
           <h3>更大，<br>就<b>更轻</b>。</h3>
           <div class="meta-line">Display weight ↓ as size ↑</div>
           <div class="num">03<small>系统</small></div>
-          <div class="bars">
-            <div class="bar on"><span>网格</span><i style="width:92%"></i></div>
-            <div class="bar on"><span>强调色</span><i style="width:64%"></i></div>
-            <div class="bar"><span>装饰</span><i style="width:14%"></i></div>
-          </div>
+          <div class="bars"><div class="bar on"><span>网格</span><i style="width:92%"></i></div><div class="bar on"><span>强调色</span><i style="width:64%"></i></div><div class="bar"><span>装饰</span><i style="width:14%"></i></div></div>
           <div class="foot"><span>IKB · #002FA7</span><span>No.01</span></div>
         </div>
-        <ul class="sample-note">
-          <li>“越大越轻”：80–120px 标题用细字重</li>
-          <li>严格左对齐网格 + 发丝线</li>
-          <li>只有一个强调色，无渐变/阴影/玻璃</li>
-        </ul>
-      </div>
+        <figcaption>
+          <p class="cap-name">IKB Blue · 克莱因蓝 <span class="flag" style="background:#002FA7;">默认</span></p>
+          <p class="cap-use">AI、技术、产品更新、设计、工程——默认首选。</p>
+          <div class="hexes"><span class="hex"><i style="background:#fafaf8"></i>#fafaf8</span><span class="hex"><i style="background:#0a0a0a"></i>#0a0a0a</span><span class="hex"><i style="background:#002FA7"></i>#002FA7</span></div>
+        </figcaption>
+      </figure>
 
-      <div class="swatches">
-        <!-- IKB Blue -->
-        <div class="sw-card">
-          <div class="sw-preview" style="background:#fafaf8; color:#0a0a0a;">
-            <span class="chip" style="background:#002FA7; color:#fff;">accent</span>
-            <span class="sans">Aa 工程</span>
-          </div>
-          <div class="sw-body">
-            <p class="sw-name">IKB Blue · 克莱因蓝 <span class="dark-flag" style="background:#002FA7;">默认</span></p>
-            <p class="sw-use">AI、技术、产品更新、设计、工程——默认首选。</p>
-            <div class="hexes">
-              <span class="hex"><i style="background:#fafaf8"></i>#fafaf8 纸</span>
-              <span class="hex"><i style="background:#0a0a0a"></i>#0a0a0a 墨</span>
-              <span class="hex"><i style="background:#002FA7"></i>#002FA7 强调</span>
-            </div>
-          </div>
+      <figure class="cell">
+        <div class="poster sw a-lemon-yellow">
+          <div class="top"><span>Issue / 02 — Retail</span><span>Swiss</span></div>
+          <span class="chip">强调上用深字</span>
+          <h3>今年<br>该买<b>什么</b></h3>
+          <div class="meta-line">Bright · consumer · playful</div>
+          <div class="num">12<small>件</small></div>
+          <div class="bars"><div class="bar on"><span>性价比</span><i style="width:88%"></i></div><div class="bar on"><span>颜值</span><i style="width:70%"></i></div><div class="bar"><span>踩雷</span><i style="width:20%"></i></div></div>
+          <div class="foot"><span>柠檬黄 · #FFD500</span><span>No.02</span></div>
         </div>
-        <!-- Lemon Yellow -->
-        <div class="sw-card">
-          <div class="sw-preview" style="background:#fafaf8; color:#0a0a0a;">
-            <span class="chip" style="background:#FFD500; color:#0a0a0a;">accent</span>
-            <span class="sans">Aa 活力</span>
-          </div>
-          <div class="sw-body">
-            <p class="sw-name">Lemon Yellow · 柠檬黄</p>
-            <p class="sw-use">年轻、消费、活力、零售、运动、俏皮的信息。</p>
-            <div class="hexes">
-              <span class="hex"><i style="background:#FFD500"></i>#FFD500 强调</span>
-              <span class="hex"><i style="background:#0a0a0a"></i>#0a0a0a 字（强调上用深色）</span>
-            </div>
-          </div>
+        <figcaption>
+          <p class="cap-name">Lemon Yellow · 柠檬黄</p>
+          <p class="cap-use">年轻、消费、活力、零售、运动、俏皮的信息。</p>
+          <div class="hexes"><span class="hex"><i style="background:#FFD500"></i>#FFD500</span><span class="hex"><i style="background:#0a0a0a"></i>#0a0a0a 字（强调上用深色）</span></div>
+        </figcaption>
+      </figure>
+
+      <figure class="cell">
+        <div class="poster sw a-lemon-green">
+          <div class="top"><span>Issue / 03 — Future</span><span>Swiss</span></div>
+          <span class="chip">强调上用深字</span>
+          <h3>更绿<br>一点的<b>未来</b></h3>
+          <div class="meta-line">Ecology · emerging · health</div>
+          <div class="num">07<small>项</small></div>
+          <div class="bars"><div class="bar on"><span>可持续</span><i style="width:90%"></i></div><div class="bar on"><span>可落地</span><i style="width:58%"></i></div><div class="bar"><span>成本</span><i style="width:24%"></i></div></div>
+          <div class="foot"><span>柠檬绿 · #C5E803</span><span>No.03</span></div>
         </div>
-        <!-- Lemon Green -->
-        <div class="sw-card">
-          <div class="sw-preview" style="background:#fafaf8; color:#0a0a0a;">
-            <span class="chip" style="background:#C5E803; color:#0a0a0a;">accent</span>
-            <span class="sans">Aa 未来</span>
-          </div>
-          <div class="sw-body">
-            <p class="sw-name">Lemon Green · 柠檬绿</p>
-            <p class="sw-use">生态、未来、新兴科技、健康、荧光笔式的当代话题。</p>
-            <div class="hexes">
-              <span class="hex"><i style="background:#C5E803"></i>#C5E803 强调</span>
-              <span class="hex"><i style="background:#0a0a0a"></i>#0a0a0a 字（强调上用深色）</span>
-            </div>
-          </div>
+        <figcaption>
+          <p class="cap-name">Lemon Green · 柠檬绿</p>
+          <p class="cap-use">生态、未来、新兴科技、健康、荧光笔式的当代话题。</p>
+          <div class="hexes"><span class="hex"><i style="background:#C5E803"></i>#C5E803</span><span class="hex"><i style="background:#0a0a0a"></i>#0a0a0a 字（强调上用深色）</span></div>
+        </figcaption>
+      </figure>
+
+      <figure class="cell">
+        <div class="poster sw a-safety-orange">
+          <div class="top"><span>Issue / 04 — Alert</span><span>Swiss</span></div>
+          <span class="chip">警示 · 紧迫</span>
+          <h3>三个<br>必须改的<b>点</b></h3>
+          <div class="meta-line">Risk · urgency · correction</div>
+          <div class="num">03<small>处</small></div>
+          <div class="bars"><div class="bar on"><span>严重</span><i style="width:94%"></i></div><div class="bar on"><span>紧急</span><i style="width:66%"></i></div><div class="bar"><span>可缓</span><i style="width:18%"></i></div></div>
+          <div class="foot"><span>安全橙 · #FF6B35</span><span>No.04</span></div>
         </div>
-        <!-- Safety Orange -->
-        <div class="sw-card">
-          <div class="sw-preview" style="background:#fafaf8; color:#0a0a0a;">
-            <span class="chip" style="background:#FF6B35; color:#fff;">accent</span>
-            <span class="sans">Aa 警示</span>
-          </div>
-          <div class="sw-body">
-            <p class="sw-name">Safety Orange · 安全橙</p>
-            <p class="sw-use">工业、警示、紧迫、风险、决策点、尖锐的纠错。</p>
-            <div class="hexes">
-              <span class="hex"><i style="background:#FF6B35"></i>#FF6B35 强调</span>
-              <span class="hex"><i style="background:#0a0a0a"></i>#0a0a0a 墨</span>
-            </div>
-          </div>
-        </div>
-      </div>
+        <figcaption>
+          <p class="cap-name">Safety Orange · 安全橙</p>
+          <p class="cap-use">工业、警示、紧迫、风险、决策点、尖锐的纠错。</p>
+          <div class="hexes"><span class="hex"><i style="background:#FF6B35"></i>#FF6B35</span><span class="hex"><i style="background:#0a0a0a"></i>#0a0a0a</span></div>
+        </figcaption>
+      </figure>
+
     </div>
   </section>
 
-  <p class="foot-note">这是固定图鉴，展示技能内置的全部风格；不是本次内容的预览。配色取自 <code>references/theme-presets.md</code>，以那里的 CSS 变量为准。</p>
+  <p class="foot-note">这是固定图鉴：每个主题一张预先做好的完整大样，<b>随技能附带、不每次重新生成</b>。所有配色取自 <code>references/theme-presets.md</code>，以那里的 CSS 变量为准；同体系各主题版面一致，只换配色。</p>
 
 </div>
 </body>

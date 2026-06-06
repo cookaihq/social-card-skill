@@ -150,7 +150,7 @@ Pick one mode per package. **The two systems are not bound to specific content t
 
 If both feel viable for a piece of content, the question becomes editorial intent: "is this a feature story or a release note?" That decides the mode, not the topic itself.
 
-When you ask the user to pick the system and they're undecided, offer a "先看风格图鉴" path that serves a visual catalog locally — see the Style gallery section in `references/fork-extensions.md`.
+When you ask the user to pick the system and they're undecided, proactively serve the visual catalog locally and include its `http://localhost:<port>/` link in the same reply, before the choice — see the Style gallery section in `references/fork-extensions.md`.
 
 Do not mix the two visual systems inside the same image set unless the user explicitly asks for a hybrid.
 
@@ -315,5 +315,5 @@ Final response (after the user has reviewed or asked for auto-check) should incl
 
 This fork adds cookaihq-only behaviors on top of the 7 steps above. Full detail in `references/fork-extensions.md`. Apply them at these points:
 
-- **During Step 3 (Choose Style Mode):** when the user is undecided on the visual system, offer a "先看风格图鉴" option that serves the built-in style catalog over a local web server (`node scripts/serve.mjs assets/style-gallery`) and hand back a clickable `http://localhost:<port>/` link. See `references/fork-extensions.md`.
+- **During Step 3 (Choose Style Mode):** when the user is undecided on the visual system, proactively serve the built-in style catalog over a local web server (`node scripts/serve.mjs assets/style-gallery`) and put the clickable `http://localhost:<port>/` link in the same reply that asks the style question — before the user chooses, not behind an opt-in option. See `references/fork-extensions.md`.
 - **After Step 7 (Deliver):** also build an overview gallery — run `node scripts/build-overview.mjs <task-dir>` and give the user the resulting `overview/index.html` path. Show inline PNGs first (Step 7 unchanged); the overview page is local-only by default. See `references/fork-extensions.md`.
