@@ -99,6 +99,14 @@ Gather only the missing information that changes the output:
   Recommend A in one line — your own photo is what makes a poster not look AI-generated. Accept whatever the user picks (including "都行你看着办") and proceed. **Do not re-prompt later, do not keep nudging toward A across multiple turns.** This question is one-shot.
 - Preferred style if specified: Swiss Style, magazine/editorial, tech, outdoor, etc.
 - Hard constraints: title text, no image on 1:1 cover, must include a hardware photo, keep screenshot readable, and so on.
+- **Output location (one-shot heads-up, before any file is written).** Default to a new task folder `social-card-<slug>/` created in the **current workspace (cwd)**. State this default in one line at intake so the user can redirect it before anything is created — e.g.
+
+  ```
+  输出我默认建在当前目录下的 social-card-<slug>/（里面再分 assets/、output/）。
+  要换位置现在告诉我，否则我就按这个建。
+  ```
+
+  If the user names a target folder, use it verbatim. This is a heads-up, **not a blocking gate**: if the user doesn't object, proceed with the default. **Do not re-ask later** — this question is one-shot, same as the image "三选一" gate above. The confirmed path is where Step 5 creates `assets/` and `output/`.
 
 If the user has already supplied enough context, proceed with reasonable assumptions.
 
@@ -141,6 +149,8 @@ Pick one mode per package. **The two systems are not bound to specific content t
 - Best when you want the page to feel engineered, quantified, decisive.
 
 If both feel viable for a piece of content, the question becomes editorial intent: "is this a feature story or a release note?" That decides the mode, not the topic itself.
+
+When you ask the user to pick the system and they're undecided, offer a "先看风格图鉴" path that serves a visual catalog locally — see the Style gallery section in `references/fork-extensions.md`.
 
 Do not mix the two visual systems inside the same image set unless the user explicitly asks for a hybrid.
 
@@ -187,7 +197,7 @@ Replace the single placeholder poster after `<!-- POSTERS_HERE -->` with one `<s
 
 Default implementation pattern:
 
-- Create a task folder in the current workspace, for example `social-card-<slug>/`.
+- Create the task folder confirmed at intake (Step 1) — default `social-card-<slug>/` in the current workspace.
 - Put source images in `assets/`.
 - Start from the seed template copied in Step 4.5, not a blank file. Prefer changing only the `<!-- POSTERS_HERE -->` region page-to-page. If a task needs custom layout CSS, add one clearly named task-scoped block in the copied file and keep semantic defaults reset (`figure { margin:0; }`, no browser-default spacing surprises).
 - Use Playwright or a browser screenshot tool to export each `.poster` or `.cover` node.
@@ -305,4 +315,5 @@ Final response (after the user has reviewed or asked for auto-check) should incl
 
 This fork adds cookaihq-only behaviors on top of the 7 steps above. Full detail in `references/fork-extensions.md`. Apply them at these points:
 
+- **During Step 3 (Choose Style Mode):** when the user is undecided on the visual system, offer a "先看风格图鉴" option that serves the built-in style catalog over a local web server (`node scripts/serve.mjs assets/style-gallery`) and hand back a clickable `http://localhost:<port>/` link. See `references/fork-extensions.md`.
 - **After Step 7 (Deliver):** also build an overview gallery — run `node scripts/build-overview.mjs <task-dir>` and give the user the resulting `overview/index.html` path. Show inline PNGs first (Step 7 unchanged); the overview page is local-only by default. See `references/fork-extensions.md`.
