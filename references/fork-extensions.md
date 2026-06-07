@@ -2,30 +2,22 @@
 
 cookaihq-only behaviors added on top of the upstream 7-step workflow. These are additive; they do not replace any upstream step.
 
-## During Step 3 — Style gallery (offer the link up front)
+## During Step 3 — Style gallery link (hard precondition)
 
-Text labels like "Swiss 工程感 + IKB 蓝" or "Editorial 杂志感" don't actually show the user what the look *is*. So **before** you ask the user to choose the visual system (the 视觉风格 question in Step 3) — whenever they haven't already locked a system at intake — proactively serve the built-in catalog and put its link in the **same reply** that asks the question, so they can look while deciding. Don't gate it behind an extra "view gallery" option; the user shouldn't have to ask to see it.
+Text labels like "Swiss 工程感 + IKB 蓝" or "Editorial 杂志感" don't actually show the user what the look *is* — the gallery does. So **whenever the user is undecided and you're about to make them choose the visual system** (the 视觉风格 question in Step 3, and they haven't locked a system at intake), the message that *precedes* that choice **must** contain a clickable link to the built-in catalog. Don't gate it behind an extra "view gallery" option, and **don't** call `AskUserQuestion` for the style choice in a turn whose text doesn't already carry this link.
 
-1. **Start the static server in the background first** (it must not block the conversation), before you send the style question. From the skill directory:
+It's just one line — the gallery is a static file, so link straight to it (no server, no build, no command to run):
 
-   ```bash
-   node scripts/serve.mjs assets/style-gallery
-   ```
+```
+两套体系气质不同，先看实样再定 👉 风格图鉴（每个主题一张大样）：
+file://<SKILL_DIR>/assets/style-gallery/index.html
 
-   Use the skill's real path for both arguments if your cwd isn't the skill root (e.g. `node /abs/skill/scripts/serve.mjs /abs/skill/assets/style-gallery`). The script prints one line — the URL, e.g. `http://localhost:8137/` — and keeps running until killed. It auto-hunts for a free port if 8137 is taken, so read the URL from stdout rather than assuming the port.
+看中哪套回来告诉我「体系 + 主题名」，例如 Swiss · IKB 蓝；只说体系也行，主题我按内容默认推荐。
+```
 
-2. **Put the clickable link in the same reply, above the choice**, then present the Editorial / Swiss question as usual:
+Replace `<SKILL_DIR>` with this skill's real absolute base path (the one you were given when the skill loaded), so the `file://` URL resolves to the actual gallery on disk. Then present the Editorial / Swiss question as usual. When the user comes back with a system (and optionally a theme), continue to choose the theme and proceed to Step 4.
 
-   ```
-   两套体系气质不同，想先看实样再定？风格图鉴（每个主题一张大样）：
-   http://localhost:<port>/
-
-   看中哪套回来告诉我「体系 + 主题名」，例如 Swiss · IKB 蓝；只说体系也行，主题我按内容默认推荐。
-   ```
-
-3. **Keep the server up while they decide** — it's a background process, so just continue the conversation. When the user comes back with a system (and optionally a theme), proceed to choose the theme and continue to Step 4. Once they've chosen, stop the server to free the port (kill the background process you started).
-
-Why a local server and not a `file://` path: the Editorial seed template loads an ES module + a WebGL canvas, both of which browsers block under the `file://` origin; `http://localhost` also gives the user one clickable link instead of a long file path. The gallery is a fixed, self-contained asset (`assets/style-gallery/index.html`), not built per task — it ships a pre-made full 3:4 poster for every one of the 10 themes (6 Editorial + 4 Swiss), so nothing is rendered or regenerated when it's served; same layout per system, only the palette changes. Its palettes are sourced from `references/theme-presets.md`; if you change a theme token there, update the matching per-theme class in `assets/style-gallery/index.html` (the `.t-*` / `.a-*` blocks) too.
+Why `file://` and not a local server: this gallery is a fully self-contained static page (HTML + inline CSS, no `<script>`, no ES module, no WebGL, no external loads), so it renders fine straight from disk — no server needed. (The "must use http, not file://" rule elsewhere is about the *card-production seed templates*, which do load an ES module + WebGL canvas; it does not apply to this catalog.) The gallery ships a pre-made full 3:4 poster for every one of the 10 themes (6 Editorial + 4 Swiss) — same layout per system, only the palette changes — so nothing is rendered or regenerated when the user opens it. Its palettes are sourced from `references/theme-presets.md`; if you change a theme token there, update the matching per-theme class in `assets/style-gallery/index.html` (the `.t-*` / `.a-*` blocks) too.
 
 ## After Step 7 — Overview gallery (always)
 

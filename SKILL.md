@@ -150,7 +150,14 @@ Pick one mode per package. **The two systems are not bound to specific content t
 
 If both feel viable for a piece of content, the question becomes editorial intent: "is this a feature story or a release note?" That decides the mode, not the topic itself.
 
-When you ask the user to pick the system and they're undecided, proactively serve the visual catalog locally and include its `http://localhost:<port>/` link in the same reply, before the choice — see the Style gallery section in `references/fork-extensions.md`.
+> **Hard precondition — show the style gallery link first.** Whenever the user is undecided and you are about to make them choose Editorial vs Swiss (whether via `AskUserQuestion` or an inline question), the message that *precedes* that choice **must** carry a clickable link to the built-in style gallery. Text labels don't show what the look *is* — the gallery (one full 3:4 sample per theme) does. The gallery is a static file, so just link to it directly; do **not** start any server. Lead your style-question turn with, e.g.:
+>
+> ```
+> 两套体系气质不同，先看实样再定 👉 风格图鉴（每个主题一张大样）：
+> file://<SKILL_DIR>/assets/style-gallery/index.html
+> ```
+>
+> Replace `<SKILL_DIR>` with this skill's real absolute base path (the one given to you when the skill loaded), so the URL is a real `file://` path the user can click. **Do not call `AskUserQuestion` for the style choice in a turn whose text doesn't contain this link.** Full flow in `references/fork-extensions.md`.
 
 Do not mix the two visual systems inside the same image set unless the user explicitly asks for a hybrid.
 
@@ -315,5 +322,5 @@ Final response (after the user has reviewed or asked for auto-check) should incl
 
 This fork adds cookaihq-only behaviors on top of the 7 steps above. Full detail in `references/fork-extensions.md`. Apply them at these points:
 
-- **During Step 3 (Choose Style Mode):** when the user is undecided on the visual system, proactively serve the built-in style catalog over a local web server (`node scripts/serve.mjs assets/style-gallery`) and put the clickable `http://localhost:<port>/` link in the same reply that asks the style question — before the user chooses, not behind an opt-in option. See `references/fork-extensions.md`.
+- **During Step 3 (Choose Style Mode):** when the user is undecided on the visual system, the message that asks them to choose **must** already contain a clickable `file://<SKILL_DIR>/assets/style-gallery/index.html` link to the built-in style catalog — before the choice, not behind an opt-in option, and with no server (the gallery is a static file). This is a hard precondition. See `references/fork-extensions.md`.
 - **After Step 7 (Deliver):** also build an overview gallery — run `node scripts/build-overview.mjs <task-dir>` and give the user the resulting `overview/index.html` path. Show inline PNGs first (Step 7 unchanged); the overview page is local-only by default. See `references/fork-extensions.md`.
